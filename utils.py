@@ -55,14 +55,18 @@ def convert_one_to_three_digits(digits, level):
 
         if digits[1] == "9":
             letter = letter + " " + values_dizaine["8"] + " " + values_on_ten[digits[2]]
-        if digits[1] == "7":
+        elif digits[1] == "7":
             letter = letter + " " + values_dizaine["6"] + " " + values_on_ten[digits[2]]
+        else:
+            letter = letter + " " + values_dizaine[digits[1]] + " " + values[digits[2]]
 
     if len(digits) == 2:
         if digits[0] == "9":
             letter = letter + " " + values_dizaine["8"] + " " + values_on_ten[digits[1]]
-        if digits[0] == "7":
+        elif digits[0] == "7":
             letter = letter + " " + values_dizaine["6"] + " " + values_on_ten[digits[1]]
+        else:
+            letter = letter + " " + values_dizaine[digits[0]] + " " + values[digits[2]]
 
     if len(digits) == 1:
         if digits == "1" and level == 1:
@@ -70,7 +74,7 @@ def convert_one_to_three_digits(digits, level):
         else:
             letter = values[digits]
 
-    return letter + " " + get_number_level_text(letter, level)
+    return letter + " " + get_number_level_text(letter, level) + " "
 
 
 # TODO : Convert number into letters
