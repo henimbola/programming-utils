@@ -66,7 +66,7 @@ def convert_one_to_three_digits(digits, level):
         elif digits[0] == "7":
             letter = letter + " " + values_dizaine["6"] + " " + values_on_ten[digits[1]]
         else:
-            letter = letter + " " + values_dizaine[digits[0]] + " " + values[digits[2]]
+            letter = letter + " " + values_dizaine[digits[0]] + " " + values[digits[1]]
 
     if len(digits) == 1:
         if digits == "1" and level == 1:
