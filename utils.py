@@ -25,7 +25,7 @@ def separate_digits(digits):
 
 def get_number_level_text(number, level):
 
-    is_singular = (number == 1) or (number == "1")
+    is_singular = number == "un"
 
     level_values = {
         3: "milliard" if is_singular else "milliards",
