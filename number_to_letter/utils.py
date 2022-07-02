@@ -1,5 +1,5 @@
 # French convert digit numbers into words
-from values import values, values_dizaine, values_on_ten
+from number_to_letter.values import values, values_dizaine, values_on_ten
 
 
 def separate_digits(digits):
