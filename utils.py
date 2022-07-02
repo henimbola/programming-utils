@@ -23,10 +23,31 @@ def separate_digits(digits):
     return [element[::-1] for element in value_array_of_three_digits][::-1]
 
 
-def convert_one_to_three_digits(digits):
+def get_number_level_text(number, level):
+
+    is_singular = (number == 1) or (number == "1")
+
+    level_values = {
+        3: "milliard" if is_singular else "milliards",
+        2: "million" if is_singular else "millions",
+        1: "mille",
+        0: ""
+    }
+
+    return level_values[level]
+
+
+def convert_one_to_three_digits(digits, level):
     letter = ""
 
+    if digits == "":
+        return ""
+
+    if digits[0] == "0":
+        return convert_one_to_three_digits(digits[1:], level)
+
     if len(digits) == 3:
+
         if digits[0] == "1":
             letter = letter + "cent"
         else:
@@ -44,9 +65,30 @@ def convert_one_to_three_digits(digits):
             letter = letter + " " + values_dizaine["6"] + " " + values_on_ten[digits[1]]
 
     if len(digits) == 1:
-        letter = values[digits]
+        if digits == "1" and level == 1:
+            letter = ""
+        else:
+            letter = values[digits]
 
-    return letter
+    return letter + " " + get_number_level_text(letter, level)
+
 
 # TODO : Convert number into letters
 
+def convert_number_to_text(number):
+    number_string = str(number)
+    number_text = ""
+
+    number_array = separate_digits(number_string)
+
+    number_thousands_level = len(number_array)-1
+    counter = 0
+
+    while number_thousands_level >= 0:
+
+        number_text += convert_one_to_three_digits(number_array[counter], number_thousands_level)
+
+        number_thousands_level -= 1
+        counter += 1
+
+    return number_text

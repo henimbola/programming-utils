@@ -1,2 +1,4 @@
+from utils import convert_number_to_text
+
 if __name__ == '__main__':
-    print("Hello World")
+    print(convert_number_to_text(1001250))
